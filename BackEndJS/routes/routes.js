@@ -44,7 +44,7 @@ router.post('/favorites', checkValidBody, async (req, res) => {
 
 router.delete('/favorites', async (req, res) => {
     try {
-        return res.status(200).json({message: await removeFavorite(req.body)})
+        return res.status(204).json({message: await removeFavorite(req.body)})
     } catch (error) {
         return res.status(error.status).json(error.message)
     }

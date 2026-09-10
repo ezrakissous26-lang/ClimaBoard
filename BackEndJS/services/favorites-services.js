@@ -27,7 +27,7 @@ export async function removeFavorite(coordinates) {
     try {
         const existingData = await readData()
         if (isExisting(existingData, coordinates)) {
-            const newData = existingData.filter((city) => !(isExisting(city, coordinates)))
+            const newData = existingData.filter((city) => !(isIdentic(city, coordinates)))
             await writeData(newData)
             return 'Successfully deleted from favorites'
         } else {
@@ -50,9 +50,17 @@ export async function removeFavorite(coordinates) {
 function isExisting(data, newCoordinates) {
     let isExist = false
     data.forEach(element => {
-        if (element.longitude === newCoordinates.longitude && element.latitude === newCoordinates.latitude) {
+        if (element.longitude === newCoordinates.longitude && element.latitude === newCoordinates.latitude && element.explorerName === newCoordinates.explorerName) {
             return isExist = true
         }
     })
     return isExist
+}
+
+function isIdentic(favorites, newFavorites) {
+    if (favorites.longitude === newFavorites.longitude && favorites.latitude === newFavorites.latitude && favorites.explorerName === newFavorites.explorerName) {
+        return true
+    } else {
+        return false
+    }
 }
