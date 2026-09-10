@@ -2,7 +2,7 @@ import fs from 'fs/promises'
 
 export async function readData() {
     try {
-        return await fs.readFile('./data/data.json', 'utf-8')
+        return JSON.parse(await fs.readFile('./data/data.json', 'utf-8'))
     } catch (error) {
         const err =  new Error(error.message)
         err.status = 500
@@ -13,8 +13,7 @@ export async function readData() {
 
 export async function writeData(data) {
     try {
-        await fs.writeFile('./data/data.json', JSON.stringify([data], null, 2), 'utf-8')
-        console.log('file written succesfully')
+        await fs.writeFile('./data/data.json', JSON.stringify(data, null, 2), 'utf-8')
     } catch (error) {
         const err =  new Error(error.message)
         err.status = 500
