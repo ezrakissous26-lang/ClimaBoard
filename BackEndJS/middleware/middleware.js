@@ -9,7 +9,6 @@ export function checkValidBody(req, res, next) {
 }
 
 export function logger(req, res, next) {
-    const status = res.on('finsih', () => res.statusCode)
-    console.log(`Date: ${Date.now()} - Url: ${req.url} - Method: ${req.method} - Status: ${status}`)
+    res.on('finish', () => console.log(`Date: ${new Date()} - Url: ${req.url} - Method: ${req.method} - Status: ${res.statusCode}`))
     next()
 }

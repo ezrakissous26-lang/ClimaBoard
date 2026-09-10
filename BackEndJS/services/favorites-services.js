@@ -1,4 +1,4 @@
-import { readData, writeData } from "../repo/load-data.js";
+import { readData, writeData } from "../repo/favorites-repository.js";
 
 export async function addFavorite(coordinates) {
     try {
