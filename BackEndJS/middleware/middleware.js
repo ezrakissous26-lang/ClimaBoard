@@ -7,6 +7,8 @@ export function checkValidBody(req, res, next) {
         return res.status(400).json({error: 'Invalid body - Fields longitude and latitude need be numbers'})
     } else if ((Number(req.body.longitude) < -180 || Number(req.body.longitude) > 180) || (Number(req.body.latitude) < -90 || Number(req.body.latitude) > 90)) {
         return res.status(400).json({error: 'Invalid coordonates - Longitude: -180  180 Latitude: -90  90'})
+    } else if (req.url === '/favorites' && !(req.body.explorerName)) {
+        return res.status(400).json({error: 'Invalid body - Field ExplorerName missing'})
     }
     next()
 }
