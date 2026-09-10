@@ -1,6 +1,6 @@
 import express from 'express'
 import { getCoordinatesByName, getWeatherByCoordinates } from '../services/weather-services.js'
-import { checkValidBody } from '../middleware/middleware.js'
+import { checkValidBody, checkValidQuery } from '../middleware/middleware.js'
 import { readData } from '../repo/favorites-repository.js'
 import { addFavorite, removeFavorite } from '../services/favorites-services.js'
 
@@ -18,9 +18,9 @@ router.get('/coordinates/:name', async (req, res) => {
     }
 })
 
-router.get('/weather', checkValidBody , async (req, res) => {
+router.get('/weather', checkValidQuery , async (req, res) => {
     try {
-        return res.status(200).json(await getWeatherByCoordinates(req.body))
+        return res.status(200).json(await getWeatherByCoordinates(req.query))
     } catch (error) {
         return res.status(error.status).json(error.message)
     }
@@ -44,7 +44,7 @@ router.post('/favorites', checkValidBody, async (req, res) => {
 
 router.delete('/favorites', async (req, res) => {
     try {
-        return res.status(204).json({message: await removeFavorite(req.body)})
+        return res.status(200).json({message: await removeFavorite(req.body)})
     } catch (error) {
         return res.status(error.status).json(error.message)
     }
