@@ -1,7 +1,26 @@
 [
   {
-    "latitude": 31.77,
-    "longitude": 35.21,
-    "explorerName": "Ezra"
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "explorerName": "ezra",
+    "cityName": "Paris"
+  },
+  {
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "explorerName": "momo",
+    "cityName": "London"
+  },
+  {
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "explorerName": "Ezra Kissous",
+    "cityName": "Paris"
+  },
+  {
+    "latitude": 42.98339,
+    "longitude": -81.23304,
+    "explorerName": "momo",
+    "cityName": "London"
   }
 ]
